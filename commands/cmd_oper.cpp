@@ -65,14 +65,14 @@ CmdResult CommandOper::HandleLocal(const std::vector<std::string>& parameters, L
 	bool match_pass = false;
 	bool match_hosts = false;
 
-	// Are they using CGI:IRC ?
+	// Are they using CGI:IRC?
 	if (user->IsModeSet('q'))
 	{
-		// They are. Bad idea, don't oper them
+		// They are. Bad idea, don't oper them.
 		user->WriteNumeric(491, "%s :May not oper from a CGI:IRC gateway", user->nick.c_str());
 		user->CommandFloodPenalty += 10000;
 
-		// Warn opers
+		// Warn opers.
 		ServerInstance->SNO->WriteGlobalSno('o', "WARNING! User %s tried to oper up from a CGI:IRC gateway using login '%s'", user->GetFullRealHost().c_str(), parameters[0].c_str());
 		ServerInstance->Logs->Log("OPER",DEFAULT,"OPER: User %s tried to oper up from a CGI:IRC gateway using login '%s'", user->GetFullRealHost().c_str(), parameters[0].c_str());
 		return CMD_FAILURE;
