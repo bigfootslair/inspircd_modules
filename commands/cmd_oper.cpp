@@ -106,7 +106,7 @@ CmdResult CommandOper::HandleLocal(const std::vector<std::string>& parameters, L
 	if (!match_hosts)
 		fields.append("hosts");
 
-	// tell them they suck, and lag them up to help prevent brute-force attacks
+	// Tell them they suck, and lag them up to help prevent brute-force attacks.
 	user->WriteNumeric(491, "%s :Invalid oper credentials",user->nick.c_str());
 	user->CommandFloodPenalty += 10000;
 
